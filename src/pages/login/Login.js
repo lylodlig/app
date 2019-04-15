@@ -1,26 +1,25 @@
-import React, {useState} from 'react'
-import {Button} from "antd";
-import {Route} from "react-router-dom"
+import React from 'react'
+import {Route} from 'react-router-dom'
+import {Button, Card} from "antd";
 import history from '../../common/history'
+import './login.css'
+import Test from './Test'
 
 
-function Login() {
-    let [name, setName] = useState("Name")
+function Login(props) {
+    console.log("login")
+    console.log(props)
 
     function login() {
-        console.log("珍珍是个傻逼:" + name)
-        history.push('/home')
-        history.go()
+        props.history.push({pathname: '/home/:test', query: {name: "sdfhk"}})
     }
 
     return (
-        <div>
-            <Button type="primary">Primary</Button>
-            <Button>Default</Button>
-            <Button type="dashed">Dashed</Button>
-            <Button type="danger">Danger</Button>
+        <div className="body">
+            <div className="content shadow">
+                <Button className="btn" onClick={login}>143</Button>
+            </div>
         </div>
-
     )
 }
 

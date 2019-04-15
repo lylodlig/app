@@ -1,0 +1,41 @@
+.body {
+    height: 700px;
+    position: relative;
+}
+
+.content {
+    width: 50%;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -25%;
+    position: absolute;
+}
+
+.shadow {
+    -moz-box-shadow: inset 0 0 10px #CCC;
+    -webkit-box-shadow: inset 0 0 10px #CCC;
+    box-shadow: inset 0 0 10px #CCC;
+}
+
+.btn {
+    display: block;
+    width: 200px;
+    height: 50px;
+    margin: 0px auto;
+    background-color: red;
+}
+
+#father {
+    width: 500px;
+    height: 300px;
+    background-color: skyblue;
+}
+
+#son {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    margin: 0 auto;
+}
