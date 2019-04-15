@@ -6,10 +6,13 @@ import List from "./pages/home/List"
 class App extends Component {
     render() {
         return (
-            <BrowserRouter>
-                <Route path="/" component={Login}/>
-                <Route path="/home" component={List}/>
-            </BrowserRouter>
+            <div>
+                <BrowserRouter>
+                    <Route exact path="/" component={Login}/>
+                    <Route exact path="/home" component={List}/>
+                </BrowserRouter>
+            </div>
+
         );
     }
 }
