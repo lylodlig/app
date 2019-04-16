@@ -3,6 +3,7 @@ import './login.css'
 import {Button, Form, Icon, Input} from "antd";
 import {connect} from 'react-redux'
 import {ActionLogin} from './reducer'
+import {ChangeContent} from './reducer2'
 import {store} from './../../index'
 
 function hasErrors(fieldsError) {
@@ -11,18 +12,19 @@ function hasErrors(fieldsError) {
 
 class HorizontalLoginForm extends React.Component {
     componentDidMount() {
-        console.log(this.props)
+        console.log("props:", this.props)
         // To disabled submit button at the beginning.
         this.props.form.validateFields();
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.props)
+        console.log("点击props", this.props)
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-                this.props.login()
+                this.props.loginM()
+                this.props.changeContent("新技术开发")
             }
         });
     }
@@ -38,7 +40,8 @@ class HorizontalLoginForm extends React.Component {
         return (
             <div>
                 <h1>{this.props.isLogin ? "已登陆" : "未登录"}</h1>
-                <div>{this.props.isLogin}====</div>
+                <h2>{this.props.data.content}</h2>
+                <h2>{this.props.data.title}</h2>
                 <Form layout="inline" onSubmit={this.handleSubmit}>
                     <Form.Item
                         validateStatus={userNameError ? 'error' : ''}
@@ -98,10 +101,15 @@ function Login(props) {
     )
 }
 
-const mapStateToProps = state => ({
-    isLogin: state.isLogin,
-})
+const mapStateToProps = state => {
+    console.log("mapStateTo", state)
+    return ({
+        isLogin: state.login,
+        data: state.content
+    })
+}
 const mapDispatchToProps = dispatch => ({
-    login: () => dispatch(ActionLogin(true))
+    loginM: () => dispatch(ActionLogin(true)),
+    changeContent: text => dispatch(ChangeContent(text))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(WrappedHorizontalLoginForm)
